@@ -48,7 +48,6 @@ my $User             = `whoami`;
 my $template         = "ImagingUpload-$hour-$min-XXXXXX"; # for tempdir
 my $TmpDir_decompressed_folder =
     tempdir($template, TMPDIR => 1);
-    #CLEANUP => 1 );
 my $output = undef;
 my $uploaded_file = undef;
 my $message = undef;
@@ -90,7 +89,7 @@ The program does the following
 
 HELP
 my $Usage = <<USAGE;
-usage: $0 </path/to/UploadedFile> [options]
+usage: $0 </path/to/UploadedFile> -patient_name [options]
        $0 -help to list options
 USAGE
 &Getopt::Tabular::SetHelp($Help, $Usage);
@@ -131,12 +130,12 @@ unless (-e $uploaded_file) {
 ################ Establish database connection #################
 ################################################################
 my $dbh = &NeuroDB::DBI::connect_to_db(@Settings::db);
+
 ################################################################
 ################ FileDecompress Object #########################
 ################################################################
 my $file_decompress = 
     NeuroDB::FileDecompress->new($uploaded_file);
-
 
 ################################################################
 ############### Unzip File #####################################
@@ -169,7 +168,7 @@ if (!($is_valid)) {
 ################################################################
 ############### Move uploaded File to incoming DIR##############
 ################################################################
-$imaging_upload->moveUploadedFile();
+##$imaging_upload->moveUploadedFile();
 
 ################################################################
 ############### Run DicomTar  ##################################
