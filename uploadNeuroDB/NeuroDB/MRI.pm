@@ -418,7 +418,21 @@ sub identify_scan_db {
     my $slice_thickness = ${fileref}->getParameter('slice_thickness');
     my $seriesUID = ${fileref}->getParameter('series_instance_uid');
     my $series_description = ${fileref}->getParameter('series_description');
-    
+    my $PulseSequenceName = ${fileref}->getParameter('PulseSequenceName');  
+    my $ParallelReductionFactorOutOfPlane = ${fileref}->getParameter('ParallelReductionFactorOutOfPlane,');  
+    my $ParallelReductionFactorInPlane = ${fileref}->getParameter('ParallelReductionFactorInPlane');  
+    my $ParallelAcquisition = ${fileref}->getParameter('ParallelAcquisition');  
+    my $ParallelAcquisitionTechnique = ${fileref}->getParameter('ParallelAcquisitionTechnique');  
+    my $DiffusionBValue = ${fileref}->getParameter('DiffusionBValue');  
+    my $DiffusionGradientOrientation = ${fileref}->getParameter('DiffusionGradientOrientation');  
+    my $ParallelReductionFactorSecondInPlane = ${fileref}->getParameter('ParallelReductionFactorSecondInPlane');  
+    my $FlowCompensationDirection = ${fileref}->getParameter('FlowCompensationDirection');  
+    my $AcqusitionContrast = ${fileref}->getParameter('AcqusitionContrast');  
+    my $SliceOrientation = ${fileref}->getParameter('SliceOrientation');  
+    my $CardiacGating_list = ${fileref}->getParameter('CardiacGating_list');  
+    my $NumberOfEchoes = ${fileref}->getParameter('NumberOfEchoes');  
+    my $EPIfactor = ${fileref}->getParameter('EPIfactor');  
+
     # get parameters specific to MRIs
     my ($tr, $te, $ti, $time);
     if ($fileref->{parameters}{modality} eq "MR") {
@@ -466,7 +480,9 @@ sub identify_scan_db {
     
     # get the list of protocols for a site their scanner and subproject
     $query = "SELECT Scan_type, ScannerID, Center_name, TR_range, TE_range, TI_range, slice_thickness_range, xspace_range, yspace_range, zspace_range,
-              xstep_range, ystep_range, zstep_range, time_range, series_description_regex
+              xstep_range, ystep_range, zstep_range, time_range, series_description_regex, PulseSequenceName, ParallelReductionFactorOutOfPlane,
+              ParallelReductionFactorInPlane, ParallelAcquisition, ParallelAcquisitionTechnique, DiffusionBValue, DiffusionGradientOrientation,
+              ParallelReductionFactorSecondInPlane, FlowCompensationDirection, AcquisitionContrast, SliceOrientation, CardiacGating_list, EPIfactor, NumberOfEchoes
               FROM mri_protocol
               WHERE
              (Center_name='$psc' AND ScannerID='$ScannerID')
@@ -513,12 +529,28 @@ sub identify_scan_db {
 	    && (!$rowref->{'xstep_range'} || &in_range($xstep, $rowref->{'xstep_range'}))
 	    && (!$rowref->{'ystep_range'} || &in_range($ystep, $rowref->{'ystep_range'}))
 	    && (!$rowref->{'zstep_range'} || &in_range($zstep, $rowref->{'zstep_range'}))
-	    && (!$rowref->{'time_range'} || &in_range($time, $rowref->{'time_range'})))) {
+	    && (!$rowref->{'time_range'} || &in_range($time, $rowref->{'time_range'}))
+	    && (!$rowref->{'PulseSequenceName'} || $PulseSequenceName =~$rowref->{'PulseSequenceName'})
+            && (!$rowref->{'ParallelReductionFactorOutOfPlane'} || &in_range($ParallelReductionFactorOutOfPlane, $rowref->{'ParallelReductionFactorOutOfPlane'}))
+            && (!$rowref->{'ParallelReductionFactorInPlane'} || &in_range($ParallelReductionFactorOutOfPlane, $rowref->{'ParallelReductionFactorInPlane'}))
+            && (!$rowref->{'ParallelAcquisition'} || $ParallelAcquisition =~$rowref->{'ParallelAcquisition'})
+            && (!$rowref->{'ParallelAcquisitionTechnique'} || $ParallelAcquisitionTechnique =~$rowref->{'ParallelAcquisitionTechnique'})
+            && (!$rowref->{'DiffusionBValue'} || &in_range($DiffusionBValue, $rowref->{'DiffusionBValue'}))
+            && (!$rowref->{'DiffusionGradientOrientation'} || &in_range($DiffusionGradientOrientation, $rowref->{'DiffusionGradientOrientation'}))
+            && (!$rowref->{'ParallelReductionFactorSecondInPlane'} || &in_range($ParallelReductionFactorSecondInPlane, $rowref->{'ParallelReductionFactorSecondInPlane'}))
+            && (!$rowref->{'FlowCompensationDirection'} || $FlowCompensationDirection =~$rowref->{'FlowCompensationDirection'})
+            && (!$rowref->{'AcqusitionContrast'} || $AcqusitionContrast =~$rowref->{'AcqusitionContrast'})
+            && (!$rowref->{'SliceOrientation'} || $SliceOrientation =~$rowref->{'SliceOrientation'})
+            && (!$rowref->{'CardiacGating_list'} || $CardiacGating_list =~$rowref->{'CardiacGating_list'})
+            && (!$rowref->{'EPIfactor'} || &in_range($EPIfactor, $rowref->{'EPIfactor'}))
+            && (!$rowref->{'NumberOfEchoes'} || &in_range($NumberOfEchoes, $rowref->{'NumberOfEchoes'}))))
+
+                            {
             return &scan_type_id_to_text($rowref->{'Scan_type'}, $dbhr);
         }
     }
     # if we got here, we're really clueless...
-    insert_violated_scans($dbhr,$series_description,$minc_location,$patient_name,$candid, $pscid,$visit,$tr,$te,$ti,$slice_thickness,$xstep,$ystep,$zstep,$xspace,$yspace,$zspace,$time,$seriesUID);
+    insert_violated_scans($dbhr,$series_description,$minc_location,$patient_name,$candid, $pscid,$visit,$tr,$te,$ti,$slice_thickness,$xstep,$ystep,$zstep,$xspace,$yspace,$zspace,$time,$seriesUID,$PulseSequenceName,$ParallelReductionFactorOutOfPlane,$ParallelReductionFactorInPlane,$ParallelAcquisition,$ParallelAcquisitionTechnique,$DiffusionBValue,$DiffusionGradientOrientation,$ParallelReductionFactorSecondInPlane,$FlowCompensationDirection,$AcqusitionContrast,$SliceOrientation,$CardiacGating_list,$NumberOfEchoes,$EPIfactor);
 
     return 'unknown';
 }    
@@ -526,12 +558,12 @@ sub identify_scan_db {
 
 sub insert_violated_scans {
 
-   my ($dbhr,$series_description,$minc_location,$patient_name,$candid, $pscid,$visit,$tr,$te,$ti,$slice_thickness,$xstep,$ystep,$zstep,$xspace,$yspace,$zspace,$time,$seriesUID) = @_;
+   my ($dbhr,$series_description,$minc_location,$patient_name,$candid,$pscid,$visit,$tr,$te,$ti,$slice_thickness,$xstep,$ystep,$zstep,$xspace,$yspace,$zspace,$time,$seriesUID,$PulseSequenceName,$ParallelReductionFactorOutOfPlane,$ParallelReductionFactorInPlane,$ParallelAcquisition,$ParallelAcquisitionTechnique,$DiffusionBValue,$DiffusionGradientOrientation,$ParallelReductionFactorSecondInPlane,$FlowCompensationDirection,$AcqusitionContrast,$SliceOrientation,$CardiacGating_list,$NumberOfEchoes,$EPIfactor) = @_;
    my $query;
    my $sth;
     
-   $sth = $${dbhr}->prepare("INSERT INTO mri_protocol_violated_scans (CandID,PSCID,time_run,series_description,minc_location,PatientName,TR_range,TE_range,TI_range,slice_thickness_range,xspace_range,yspace_range,zspace_range,xstep_range,ystep_range,zstep_range,time_range,SeriesUID) VALUES (?,?,now(),?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-   my $success = $sth->execute($candid,$pscid,$series_description,$minc_location,$patient_name,$tr,$te,$ti,$slice_thickness,$xspace,$yspace,$zspace,$xstep,$ystep,$zstep,$time,$seriesUID);
+   $sth = $${dbhr}->prepare("INSERT INTO mri_protocol_violated_scans (CandID,PSCID,time_run,series_description,minc_location,PatientName,TR_range,TE_range,TI_range,slice_thickness_range,xspace_range,yspace_range,zspace_range,xstep_range,ystep_range,zstep_range,time_range,SeriesUID,PulseSequenceName,ParallelReductionFactorOutOfPlane,ParallelReductionFactorInPlane,ParallelAcquisition,ParallelAcquisitionTechnique,DiffusionBValue,DiffusionGradientOrientation,ParallelReductionFactorSecondInPlane,FlowCompensationDirection,AcquisitionContrast,SliceOrientation,CardiacGating_list,NumberOfEchoes,EPIfactor) VALUES (?,?,now(),?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+   my $success = $sth->execute($candid,$pscid,$series_description,$minc_location,$patient_name,$tr,$te,$ti,$slice_thickness,$xspace,$yspace,$zspace,$xstep,$ystep,$zstep,$time,$seriesUID,$PulseSequenceName,$ParallelReductionFactorOutOfPlane,$ParallelReductionFactorInPlane,$ParallelAcquisition,$ParallelAcquisitionTechnique,$DiffusionBValue,$DiffusionGradientOrientation,$ParallelReductionFactorSecondInPlane,$FlowCompensationDirection,$AcquisitionContrast,$SliceOrientation,$CardiacGating_list,$NumberOfEchoes,$EPIfactor);
 
 }
 # ------------------------------ MNI Header ----------------------------------
@@ -848,7 +880,21 @@ sub mapDicomParameters {
      pixel_padding_value => 'dicom_0x0028:el_0x0120',
      window_center => 'dicom_0x0028:el_0x1050',
      window_width => 'dicom_0x0028:el_0x1051',
-     window_center_width_explanation => 'dicom_0x0028:el_0x1055'
+     window_center_width_explanation => 'dicom_0x0028:el_0x1055',
+     PulseSequenceName => 'dicom_0x0018:el_0x9005',
+     ParallelReductionFactorOutOfPlane => 'dicom_0x0018:el_0x9155',
+     ParallelReductionFactorInPlane => 'dicom_0x0018:el_0x9069',
+     ParallelAcquisition => 'dicom_0x0018:el_0x9077',
+     ParallelAcquisitionTechnique => 'dicom_0x0018:el_0x9078',
+     DiffusionBValue => 'dicom_0x0018:el_0x9087',
+     DiffusionGradientOrientation => 'dicom_0x0018:el_0x9089',
+     ParallelReductionFactorSecondInPlane => 'dicom_0x0018:el_0x9168',
+     FlowCompensationDirection => 'dicom_0x0018:el_0x9183',
+     AcquisitionContrast => 'dicom_0x0008:el_0x9209',
+     SliceOrientation => 'dicom_0x2001:el_0x100b',
+     EPIfactor => 'dicom_0x2001:el_0x100b',
+     NumberOfEchoes => 'dicom_0x2001:el_0x1014',
+     CardiacGating_list => 'dicom_0x2001:el_0x1010'
     );   
 
     # map parameters, removing the old params if they start with 'dicom'
