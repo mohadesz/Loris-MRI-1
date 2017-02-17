@@ -1,0 +1,512 @@
+commit b213a2c2ed6b98af8b54ddf0894b5f9f27da8f51
+Merge: 6ca5de5 ac1e129
+Author: samirdas <samir@bic.mni.mcgill.ca>
+Date:   Fri Sep 25 11:16:19 2015 -0400
+
+    Merge pull request #26 from cmadjar/CleanUpMysqlQueries
+    
+    Clean up mysql queries
+
+commit ac1e129707e59ae9aed6f5fe39ddaf93c0a7a136
+Author: Cécile Madjar <cecile.madjar@gmail.com>
+Date:   Mon Aug 3 14:19:32 2015 -0400
+
+    Fixed bug inserted while integrating mysql prepare statements
+
+commit 527ffd829952f77259cbb7bbb72811ca367bffb7
+Author: Cécile Madjar <cecile.madjar@gmail.com>
+Date:   Mon Aug 3 13:27:20 2015 -0400
+
+    Prepared mysql statement for DCMSUM.pm
+
+commit 41964f54f07a5339e637af8c88bf2307430f9f82
+Author: Cécile Madjar <cecile.madjar@gmail.com>
+Date:   Mon Aug 3 12:26:00 2015 -0400
+
+    Cleaned up and prepared statement for queries in main directory of dicom-archive-tools
+
+commit be6d2c9312240e5fc90f6818cbdb3afd35231fdf
+Author: Cécile Madjar <cecile.madjar@gmail.com>
+Date:   Mon Aug 3 11:44:25 2015 -0400
+
+    Added functionality to print query on one line.
+
+commit 6ca5de5de135eb7f4a15640150aa10d7c0b836a5
+Merge: 89c29c6 12ccd71
+Author: samirdas <samir@bic.mni.mcgill.ca>
+Date:   Wed Sep 23 10:45:01 2015 -0400
+
+    Merge pull request #29 from cmadjar/TarchivePathRelative
+    
+    Tarchive path relative
+
+commit 12ccd71dc1f9bc8c907f64f187d1d19e96aa24a0
+Author: Cécile Madjar <cecile.madjar@gmail.com>
+Date:   Wed Aug 5 12:20:55 2015 -0400
+
+    Created a MySQL scripted patch to make ArchiveLocation in the tarchive table relative.
+
+commit 684cf80f5002e37d8ee1ea84862ea40a9cfeeea5
+Author: Cécile Madjar <cecile.madjar@gmail.com>
+Date:   Tue Aug 4 10:50:19 2015 -0400
+
+    Made ArchiveLocation relative in tarchive table.
+
+commit 1b6d87f4166984112df965241172073fe644b83e
+Author: Cécile Madjar <cecile.madjar@gmail.com>
+Date:   Mon Aug 3 14:37:34 2015 -0400
+
+    Added -centerName option in call to dicomTar.pl.
+
+commit 89c29c6128728d8a7b249a6ceb3546c4651f16d0
+Merge: 5f12ec0 683a9f4
+Author: samirdas <samir@bic.mni.mcgill.ca>
+Date:   Thu Jul 30 11:45:50 2015 -0400
+
+    Merge pull request #25 from cmadjar/NiftiSupport
+    
+    NIfTI support of the imaging pipeline (profileTemplate change).
+
+commit 683a9f4445faa8060539110e081337824c4407a0
+Author: Cécile Madjar <cecile.madjar@gmail.com>
+Date:   Tue Jul 28 17:29:10 2015 -0400
+
+    NIfTI support of the imaging pipeline (profileTemplate change).
+
+commit 5f12ec00baecd12c7a7c95c4e3cf59a3e9ac8144
+Merge: c85c906 7c01982
+Author: samirdas <samir@bic.mni.mcgill.ca>
+Date:   Thu Jun 25 11:47:07 2015 -0400
+
+    Merge pull request #24 from cmadjar/IncludePET
+    
+    Added functionality to insert PET DICOMs in tarchive tables.
+
+commit 7c0198232f1ac9bb052b55f0858f29df5b6e6ea4
+Author: Cécile Madjar <cecile.madjar@gmail.com>
+Date:   Sat Jun 13 21:10:29 2015 -0400
+
+    Fixed indentation in the pull request.
+
+commit 598b46ae9da50034644f00731e3c0508dc72afc7
+Author: Cécile Madjar <cecile.madjar@gmail.com>
+Date:   Sat Jun 13 18:57:29 2015 -0400
+
+    Added functionality to insert PET DICOMs in tarchive tables.
+
+commit c85c906a40015681e2c2b359a9cb00f1fc9cf315
+Merge: fbf4e2a 1ab7134
+Author: samirdas <samir@bic.mni.mcgill.ca>
+Date:   Fri May 29 11:28:21 2015 -0400
+
+    Merge pull request #23 from mohadesz/updateMRI_Upload_bug_fix
+    
+    replaced the sourcelocation column by DecompressedLocation
+
+commit 1ab7134c69ea856800fae0e760479493ed808f75
+Author: zia <zia.mohades@gmail.com>
+Date:   Fri May 15 15:10:02 2015 -0400
+
+    replaced the sourcelocation column by DecompressedLocation
+
+commit fbf4e2abff49e1eb5188ee4597ba728b14b469a5
+Merge: d38dd3c ecf8fb6
+Author: samirdas <samir@bic.mni.mcgill.ca>
+Date:   Tue Apr 7 17:02:25 2015 -0400
+
+    Merge pull request #21 from cmadjar/DeprecatedDefined
+    
+    Deprecated defined on array and hashes
+
+commit ecf8fb61e0c38a7d2bbcc405b72529998c7c0291
+Author: Cécile Madjar <cecile.madjar@gmail.com>
+Date:   Tue Apr 7 14:45:18 2015 -0400
+
+    Removed all occurences of defined(@array).
+
+commit 24ff9abff26589b1f76bb6ad0dd399bbba31d32e
+Author: Cécile Madjar <cecile.madjar@gmail.com>
+Date:   Tue Apr 7 14:39:49 2015 -0400
+
+    Defined(@array) is deprecated.                    Removed error message on the console defined(@array) is deprecated at... (Maybe you should just omit the defined()?)
+
+commit d38dd3c68c1dd015cf783b48122bc708b3bb2cb5
+Merge: d82d391 2089352
+Author: samirdas <samir@bic.mni.mcgill.ca>
+Date:   Thu Apr 2 16:31:08 2015 -0400
+
+    Merge pull request #20 from mohadesz/profile_template_new_option
+    
+    Added a new config option $bin_dir
+
+commit 2089352bcb551f251971b5a38484e5c453f2df3f
+Author: zia <zia.mohades@gmail.com>
+Date:   Fri Feb 6 11:32:29 2015 -0500
+
+    Fixed the option
+
+commit ce47612c77047387ae99a4c261ae6a611cd846ff
+Author: zia <zia.mohades@gmail.com>
+Date:   Fri Feb 6 11:29:50 2015 -0500
+
+    Added a new option config $bin_dir
+
+commit d82d391a197f7a8453bca44a9e6f1423c547407a
+Merge: eeb2b19 d242e86
+Author: rathisekaran <sekaranrathi@gmail.com>
+Date:   Thu Dec 18 12:18:30 2014 -0500
+
+    Merge pull request #19 from marir10/dicomTar_improvement
+    
+    Dicom tar improvement
+
+commit d242e866432df371fdd049f5172826bd9db4d4fb
+Author: marir10 <marir@nate.com>
+Date:   Sat Dec 13 01:02:42 2014 +0900
+
+    cosmetic change
+
+commit 7ee9e587c325dee8b439a0d86f5a93d2023e8f23
+Author: marir10 <marir@nate.com>
+Date:   Sat Dec 13 00:55:21 2014 +0900
+
+    added exit 0 at the end of the file
+
+commit eeb2b19e153bc261d39501f4f448fa50a59e05c3
+Merge: 5b37d12 cd4846a
+Author: samirdas <samir@bic.mni.mcgill.ca>
+Date:   Tue Nov 25 12:10:55 2014 -0500
+
+    Merge pull request #18 from cmadjar/AddedCreateVisitLabelOption
+    
+    Added $subjectID{'createVisitLabel'} option to profile template.
+
+commit cd4846add6e7866ec924c6186d9c0281bc5a17b2
+Author: Cécile Madjar <cecile.madjar@gmail.com>
+Date:   Thu Nov 20 14:56:31 2014 -0500
+
+    Changed $subjectID{'createVisitLabel'} type to boolean
+
+commit fd2ae55320be845b8d131d5af1ef7572fbb08cf0
+Author: Cécile Madjar <cecile.madjar@gmail.com>
+Date:   Thu Nov 20 11:28:41 2014 -0500
+
+    Added $subjectID{'createVisitLabel'} option to profile template.
+
+commit 5b37d12568aff8dcfdedf6895a112f9c70cad052
+Merge: 8405124 2baba6d
+Author: samirdas <samir@bic.mni.mcgill.ca>
+Date:   Thu Sep 18 16:40:29 2014 -0400
+
+    Merge pull request #17 from mohadesz/bug_fix_profiletemplate
+    
+    Removed extra characters
+
+commit 2baba6d42533398fe93c791aeae9e5d0f9469e5d
+Author: zia <zia.mohades@gmail.com>
+Date:   Sun Sep 14 14:26:09 2014 -0400
+
+    removed useless numbers
+
+commit 8405124117c38335fec396b1b481fd3872d3ba08
+Merge: 2a03244 58a5866
+Author: samirdas <samir@bic.mni.mcgill.ca>
+Date:   Tue May 13 11:36:23 2014 -0400
+
+    Merge pull request #15 from mathieudesro/inversionTimeMayNotBeSet
+    
+    Inversion time may be optionnal into Dicom header
+
+commit 58a5866244ac8527d3f0b23b79e7efdbe8030e4f
+Author: Mathieu Desrosiers <mathieu.desrosiers@criugm.qc.ca>
+Date:   Mon May 12 15:15:53 2014 -0400
+
+    THIS IS A DUPLICATE from opionnalProfileFixInDicomTar pull request please ignore change in dicomTar.pl
+    
+    THIS IS A DUPLICATE from opionnalProfileFixInDicomTar pull request please ignore change in dicomTar.pl
+
+commit c91ed2669052580a7d9f6da71b3a49689ec3ea4a
+Author: Mathieu <mathieu.desrosiers@criugm.qc.ca>
+Date:   Mon May 12 14:50:08 2014 -0400
+
+    DICOM HEADER may not have Inversion time (0018,9079) set which cause
+    tarchives_series sql table who expect a double to receive an empty string.
+
+commit 29387563029872e8be377969412b475ebf10c4ab
+Author: Mathieu <mathieu.desrosiers@criugm.qc.ca>
+Date:   Mon May 12 14:43:50 2014 -0400
+
+    Sometime DICOM Header may not have Invertion Time field (0018,9079). Set Inversion Time to 0 in tarchive_series to avoid error message: DBD::mysql::st execute failed: Data truncated for column 'InversionTime'
+
+commit 8806c7e6ff6c22ff911125bb243761f34f09a8d5
+Author: Mathieu <mathieu.desrosiers@criugm.qc.ca>
+Date:   Mon May 12 11:06:50 2014 -0400
+
+    DicomTar.pl should use proper $profile name instead of prod
+
+commit 2a032444f8e482e538421be4019e658aaeab392b
+Merge: db6b4db 7cfba97
+Author: driusan <driusan@gmail.com>
+Date:   Tue May 6 12:09:49 2014 -0400
+
+    Merge pull request #13 from mohadesz/update_header_path
+    
+    Removed the absolute path
+
+commit 7cfba97d43ff8ebeb33f6b6d6cb684e4d66d6f6a
+Author: zia <zia.mohades@gmail.com>
+Date:   Thu May 1 10:44:39 2014 -0400
+
+    Removed the full path
+
+commit db6b4db21ee4720cf0a1854751d9da9ba7d81e84
+Merge: 794adc5 3a212e3
+Author: samirdas <samir@bic.mni.mcgill.ca>
+Date:   Fri Apr 11 15:11:23 2014 -0400
+
+    Merge pull request #12 from cmadjar/mv_prod_take2
+    
+    Moved reference to ~/.neurodb to .loris_mri directory
+
+commit 3a212e30604f92e0c22d9e688d816edee93d7c74
+Author: Cecile Madjar <cecile.madjar@gmail.com>
+Date:   Wed Apr 9 10:40:14 2014 -0400
+
+    Replaced .neurodb by .loris_mri in updateHeaders.pl
+
+commit 8c39cda708420486289b7a8f75c6e8e6b55d3260
+Author: Cecile Madjar <cecile.madjar@gmail.com>
+Date:   Tue Apr 8 16:56:15 2014 -0400
+
+    Some more files
+
+commit 5444842910fa5c90a5016ced0163808726e8e079
+Author: Cecile Madjar <cecile.madjar@gmail.com>
+Date:   Tue Apr 8 16:29:13 2014 -0400
+
+    Moved reference to ~/.neurodb to .loris_mri directory
+
+commit 794adc59c1718677ae692d91d14e6a728330304a
+Merge: 29f93cf 4b40935
+Author: samirdas <samir@bic.mni.mcgill.ca>
+Date:   Tue Apr 8 13:48:28 2014 -0400
+
+    Merge pull request #9 from cmadjar/remove_DS_Store_MACOS
+    
+    Remove .DS_Store file from DICOM source directory...
+
+commit 29f93cff97311c5d5e8ab466a6539878699ffd61
+Merge: 59d9d97 7beca90
+Author: samirdas <samir@bic.mni.mcgill.ca>
+Date:   Tue Apr 8 13:47:49 2014 -0400
+
+    Merge pull request #10 from cmadjar/Update_MRI_functions_ProfileTemplate
+    
+    Update mri functions profile template
+
+commit 59d9d970ebf2a1642acd5e785979fcaeaaf2cb2e
+Merge: ed29dda 40c6a83
+Author: samirdas <samir@bic.mni.mcgill.ca>
+Date:   Tue Apr 1 12:38:06 2014 -0400
+
+    Merge pull request #7 from mohadesz/update_mri_upload_table
+    
+    Update mri upload table
+
+commit 7beca907729a190b8568f837577590cd1ae80c55
+Author: Cecile Madjar <cecile.madjar@gmail.com>
+Date:   Wed Mar 26 11:12:08 2014 -0400
+
+    	modified:   profileTemplate
+
+commit d3c8d047160f113856a24e63a223597400f6fa3d
+Author: Cecile Madjar <cecile.madjar@gmail.com>
+Date:   Wed Mar 26 11:08:06 2014 -0400
+
+    Modified getSubjectIDs so that it uses PatientName instead of PatientID
+    lookupCenterID using patient name instead of PatientID
+
+commit ed29ddaff53b83e51579f2460872af8d3e2cc15c
+Merge: bdc21b2 3597a4a
+Author: samirdas <samir@bic.mni.mcgill.ca>
+Date:   Tue Mar 25 15:58:34 2014 -0400
+
+    Merge pull request #8 from cmadjar/ModifyDirNameTemplate
+    
+    Modified $d to $dir in profileTemplate
+
+commit 4b40935264060cf5077fd0fc2d4e6167f65a3937
+Author: Cecile Madjar <cecile.madjar@gmail.com>
+Date:   Mon Mar 24 12:35:19 2014 -0400
+
+    Remove .DS_Store file from DICOM source directory before creating new object.
+    Other fails while reading content of dcm source directory
+
+commit 3597a4a391eb7df44f09ec909465599fb2dfc0df
+Author: Cecile Madjar <cecile.madjar@gmail.com>
+Date:   Mon Mar 24 11:53:02 2014 -0400
+
+    Modified $d to $dir in profileTemplate
+
+commit 40c6a83a97a3b3437c9fdcf9801c4f7fc090cd9f
+Author: zia <zia.mohades@gmail.com>
+Date:   Tue Mar 18 15:45:37 2014 -0400
+
+    Changed the queries to use the prepared statements
+
+commit bdc21b24e325ad265c8f25aa3b0c95c97be15e66
+Merge: e31e7c3 c2fbd1e
+Author: samirdas <samir@bic.mni.mcgill.ca>
+Date:   Tue Mar 18 14:21:33 2014 -0400
+
+    Merge pull request #6 from cmadjar/DTIPrep_profileTemplate_modifications
+    
+    Modification to the profileTemplate to be able to use DTIPrep pipeline
+
+commit 8adf3d979b21588f682e3ba101933363c939b48f
+Author: zia <zia.mohades@gmail.com>
+Date:   Tue Mar 18 12:37:16 2014 -0400
+
+    Removed the filetype option
+
+commit 2932e8764ab842eb095e508b9c348032a6ab1704
+Author: zia <zia.mohades@gmail.com>
+Date:   Tue Mar 18 12:19:32 2014 -0400
+
+    1) added the functionality to insert the extension , 2) fixed
+    indentation
+
+commit 213ee35ab4434f7ea743bd7e0ecab2dee739e3d9
+Author: zia <zia.mohades@gmail.com>
+Date:   Mon Mar 17 11:14:54 2014 -0400
+
+    Correct spelling mistakes
+
+commit 6a6249d0036264da5d043859e9bcfb7fb671cc25
+Author: zia <zia.mohades@gmail.com>
+Date:   Mon Mar 17 11:08:33 2014 -0400
+
+    Fixed typos and indentation
+
+commit 879e03ce641e38fdff99713aed73de2fcce3fa61
+Author: zia <zia.mohades@gmail.com>
+Date:   Sun Mar 16 17:18:45 2014 -0400
+
+    Cosmetic changes
+
+commit 3196864414d8af28679c94e64925a8ee92263a2c
+Author: zia <zia.mohades@gmail.com>
+Date:   Sun Mar 16 17:13:27 2014 -0400
+
+    Cosmetic changes
+
+commit c2fbd1eece00aa0cde49d82f99b9d3a9725f2123
+Author: Cecile Madjar <cecile.madjar@gmail.com>
+Date:   Thu Feb 27 14:50:30 2014 -0500
+
+    Added get_DTI_Site_CandID_Visit function in profile file
+
+commit 222d3704b5d9fb983a36e46f5025f832d0897768
+Author: Cecile Madjar <cecile.madjar@gmail.com>
+Date:   Thu Feb 27 12:09:10 2014 -0500
+
+    Modification to the profileTemplate to be able to use DTIPrep pipeline
+
+commit 70a0c7e8f3445e58d2c8ae5b4ac997327f4a2058
+Author: zia <zia.mohades@gmail.com>
+Date:   Mon Feb 10 15:54:30 2014 -0500
+
+    Includes option to update the mri_upload table
+
+commit 8eda0742d154b6e1752e8a04302c949898093313
+Author: zia <zia.mohades@gmail.com>
+Date:   Mon Feb 10 15:53:50 2014 -0500
+
+    Updates the mri_upload table
+
+commit e31e7c3cbd92469e2c122b3597ad7dbf52e2beda
+Merge: 76cc0bd 3fa0288
+Author: cmadjar <cecile.madjar@gmail.com>
+Date:   Tue Dec 10 08:55:32 2013 -0800
+
+    Merge pull request #4 from cmadjar/updateHeadersFix
+    
+    Fixed the dcmodify --insert-tag option to --insert
+
+commit 3fa02887d90788a06d0e5b844385f5df5c937719
+Author: Cecile Madjar <cecile.madjar@gmail.com>
+Date:   Tue Mar 19 14:23:46 2013 -0400
+
+    Fixed the dcmodify --insert-tag option to --insert (option used in more recent dcmodify).
+
+commit 76cc0bdf965776fc5571568e954a3317c939239c
+Merge: 8666e8c 7025aba
+Author: samirdas <samthebsman@gmail.com>
+Date:   Fri Sep 28 08:45:13 2012 -0700
+
+    Merge pull request #3 from mohadesz/profile-template-change
+    
+    Profile template Modification
+
+commit 7025abaa0bee03c0ab73a86c1a288a087c017452
+Author: zia <zia.mohades@gmail.com>
+Date:   Fri Sep 28 10:16:23 2012 -0400
+
+    Set the if_sge to false by default
+
+commit fbc44b560c313a5305f193b0ae71eedcbad4edae
+Author: zia <zia.mohades@gmail.com>
+Date:   Fri Sep 28 09:44:48 2012 -0400
+
+    Modified the tarchivelibdir temp value
+
+commit 815ebfe1a26f0cac4d4307c9b30c14a2aff9fbfb
+Author: zia <zia.mohades@gmail.com>
+Date:   Thu Sep 27 17:27:30 2012 -0400
+
+    Modifies the temporairy value for the tarchive_librairy location
+
+commit f4c00c7b519e5536722f85e2894b65e831c20a3d
+Author: zia <zia.mohades@gmail.com>
+Date:   Wed Sep 26 14:59:50 2012 -0400
+
+    Places back the forward slash in the email-address
+
+commit 98944a9a13bb14f4bb0bbc47921afffa167ba4a6
+Author: zia <zia.mohades@gmail.com>
+Date:   Wed Sep 26 14:56:35 2012 -0400
+
+    Modifies the temporairy values of $data_dir, $get_dicom_info and $mail_user  variables
+
+commit 8666e8c4863399be7f4ef8830dccfb295adb0d39
+Merge: 15362ef 223e4a0
+Author: samirdas <samthebsman@gmail.com>
+Date:   Tue Sep 25 07:30:36 2012 -0700
+
+    Merge pull request #2 from driusan/AddIncoming
+    
+    Add incoming site as config option.
+
+commit 223e4a0a6c52fd8f7b89edefbf6bdf160e129d60
+Author: samirdas <samthebsman@gmail.com>
+Date:   Tue Sep 25 11:29:05 2012 -0300
+
+    Added missing semi-colons.
+
+commit a63155e746b70a4baa9990d313f3495ed31f1604
+Author: Dave MacFarlane <driusan@gmail.com>
+Date:   Fri Sep 14 15:03:58 2012 -0400
+
+    Added new getIncomingDir config function
+
+commit 2ba4dfe1a8c168b96f634db3b9e49718938442db
+Author: zia <zia.mohades@gmail.com>
+Date:   Thu Sep 13 15:01:24 2012 -0400
+
+    add two configurable options is_site and is_sge
+
+commit 15362efa4ca1e4a82642a6525fc88e99adf0597f
+Author: Dave MacFarlane <driusan@gmail.com>
+Date:   Wed Mar 30 16:14:43 2011 -0400
+
+    Initial import of files from http://code.google.com/p/dicom-archive/
